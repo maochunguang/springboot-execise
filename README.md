@@ -11,6 +11,6 @@
 
 ### 1. aop实战
 1. 打印request，response日志，service日志
-2. 全局异常处理
+2. 全局异常处理：`GlobalExceptionAdvice`
 3. 全局json名称返回下划线风格
 
