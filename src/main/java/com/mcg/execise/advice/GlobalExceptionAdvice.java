@@ -11,21 +11,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * @author mao
  * Date：2020/12/27
- * Description：
+ * Description：全局异常处理
  */
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionAdvice {
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
-    public ResponseVO errorHandler(Exception e) {
+    public ResponseVO<Object> errorHandler(Exception e) {
         log.error("not cached exception", e);
         return new ResponseVO<>(ResponseEnum.UNKNOWN_ERROR);
     }
 
     @ResponseBody
     @ExceptionHandler(value = BusinessException.class)
-    public ResponseVO businessErrorHandler(BusinessException e) {
+    public ResponseVO<Object> businessErrorHandler(BusinessException e) {
         log.error("business unExcepted Exception", e);
         return new ResponseVO<>(ResponseEnum.BUSINESS_ERROR);
     }
