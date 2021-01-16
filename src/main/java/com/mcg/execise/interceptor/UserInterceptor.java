@@ -1,4 +1,4 @@
-package com.mcg.execise.extension;
+package com.mcg.execise.interceptor;
 
 import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;

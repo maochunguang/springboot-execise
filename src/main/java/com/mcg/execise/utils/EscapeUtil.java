@@ -1,7 +1,7 @@
 package com.mcg.execise.utils;
 
 
-import com.mcg.execise.extension.HTMLFilter;
+import com.mcg.execise.filter.HTMLFilter;
 import org.apache.commons.lang3.StringUtils;
 
 /**

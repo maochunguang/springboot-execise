@@ -1,5 +1,6 @@
-package com.mcg.execise.extension;
+package com.mcg.execise.filter;
 
+import com.mcg.execise.extension.XssHttpServletRequestWrapper;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.*;

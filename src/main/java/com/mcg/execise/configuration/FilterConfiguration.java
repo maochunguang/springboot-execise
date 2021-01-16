@@ -1,6 +1,6 @@
 package com.mcg.execise.configuration;
 
-import com.mcg.execise.extension.CostTimeFilter;
+import com.mcg.execise.filter.CostTimeFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

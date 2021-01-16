@@ -1,4 +1,4 @@
-package com.mcg.execise.extension;
+package com.mcg.execise.filter;
 
 import javax.servlet.*;
 import java.io.IOException;
