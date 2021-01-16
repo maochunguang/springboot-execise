@@ -27,7 +27,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.doo.mybatis.domain.entity"
+        <javaModelGenerator targetPackage="com.mcg.execise.entity"
                             targetProject="src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>

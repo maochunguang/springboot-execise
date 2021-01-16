@@ -1,4 +1,4 @@
-package com.doo.mybatis.domain.entity;
+package com.mcg.execise.entity;
 
 import java.util.Date;
 

@@ -1,7 +1,7 @@
 package com.mcg.execise.dao;
 
-import com.doo.mybatis.domain.entity.User;
-import com.doo.mybatis.domain.entity.UserExample;
+import com.mcg.execise.entity.User;
+import com.mcg.execise.entity.UserExample;
 
 import java.util.List;
 
