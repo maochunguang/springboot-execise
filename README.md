@@ -4,12 +4,14 @@
 3. 熟悉springboot扩展点
 4. 熟悉spring其他模块的扩展
     1. mvc扩展
+        1. 返回字段名为下划线
     2. dataSource扩展
         1. 读写分离插件
         2. 动态数据源插件
     3. mybatis扩展：
         1. mbg生成merge插件，overwrite xml文件
 5. 做成自己开发的脚手架，开箱即用
+6. 扩展log4j实现白名单打印
 
 ## 实战任务
 
