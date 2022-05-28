@@ -4,10 +4,10 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/execise
+    url: jdbc:mysql://localhost:3306/spring_exercise
     username: root
-    password: MyNewPass
+    password: mypassword
 
 mybatis:
   mapperLocations: classpath:mappers/*.xml
-  type-aliases-package: com.mcg.execise.entity
+  type-aliases-package: com.mcg.exercise.entity
