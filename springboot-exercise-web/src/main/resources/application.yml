@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring_exercise?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: mypassword
+
+mybatis:
+  mapperLocations: classpath:mappers/*.xml
+  type-aliases-package: com.mcg.exercise.entity
+
+operate:
+  scanPackage: test
+  operateName: test

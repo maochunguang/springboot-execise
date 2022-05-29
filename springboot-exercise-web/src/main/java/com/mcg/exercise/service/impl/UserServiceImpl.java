@@ -2,8 +2,10 @@ package com.mcg.exercise.service.impl;
 
 import com.mcg.exercise.dao.UserMapper;
 import com.mcg.exercise.entity.User;
+import com.mcg.exercise.operate.service.OperateService;
 import com.mcg.exercise.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,9 +19,13 @@ import javax.annotation.Resource;
 public class UserServiceImpl implements IUserService {
     @Resource
     private UserMapper userMapper;
+    @Autowired
+    private OperateService operateService;
 
     @Override
     public User queryUserById(Long id) {
+        log.info("queryUserById operate");
+        operateService.operateLog();
         return userMapper.selectByPrimaryKey(id).orElse(null);
     }
 }
