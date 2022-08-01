@@ -4,7 +4,7 @@ import static com.mcg.exercise.dao.UserDynamicSqlSupport.*;
 import static org.mybatis.dynamic.sql.SqlBuilder.*;
 
 import com.mcg.exercise.entity.User;
-import java.util.Collection;
+import com.mcg.exercise.extension.mybatis.StringToListTypeHandler;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Generated;
@@ -14,6 +14,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
@@ -21,7 +22,6 @@ import org.mybatis.dynamic.sql.BasicColumn;
 import org.mybatis.dynamic.sql.delete.DeleteDSLCompleter;
 import org.mybatis.dynamic.sql.delete.render.DeleteStatementProvider;
 import org.mybatis.dynamic.sql.insert.render.InsertStatementProvider;
-import org.mybatis.dynamic.sql.insert.render.MultiRowInsertStatementProvider;
 import org.mybatis.dynamic.sql.select.CountDSLCompleter;
 import org.mybatis.dynamic.sql.select.SelectDSLCompleter;
 import org.mybatis.dynamic.sql.select.render.SelectStatementProvider;
@@ -35,7 +35,7 @@ import org.mybatis.dynamic.sql.util.mybatis3.MyBatis3Utils;
 @Mapper
 public interface UserMapper {
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: user")
-    BasicColumn[] selectList = BasicColumn.columnList(id, userNick, loginName, password, description, avatarUrl, createTime, updateTime);
+    BasicColumn[] selectList = BasicColumn.columnList(id, userNick, loginName, password, description, tags, avatarUrl, createTime, updateTime);
 
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: user")
     @SelectProvider(type=SqlProviderAdapter.class, method="select")
@@ -47,11 +47,8 @@ public interface UserMapper {
 
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: user")
     @InsertProvider(type=SqlProviderAdapter.class, method="insert")
+    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="record.id", before=false, resultType=Long.class)
     int insert(InsertStatementProvider<User> insertStatement);
-
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: user")
-    @InsertProvider(type=SqlProviderAdapter.class, method="insertMultiple")
-    int insertMultiple(MultiRowInsertStatementProvider<User> multipleInsertStatement);
 
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: user")
     @SelectProvider(type=SqlProviderAdapter.class, method="select")
@@ -66,6 +63,7 @@ public interface UserMapper {
         @Result(column="login_name", property="loginName", jdbcType=JdbcType.VARCHAR),
         @Result(column="password", property="password", jdbcType=JdbcType.VARCHAR),
         @Result(column="description", property="description", jdbcType=JdbcType.VARCHAR),
+        @Result(column="tags", property="tags", typeHandler=StringToListTypeHandler.class, jdbcType=JdbcType.VARCHAR),
         @Result(column="avatar_url", property="avatarUrl", jdbcType=JdbcType.VARCHAR),
         @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="update_time", property="updateTime", jdbcType=JdbcType.TIMESTAMP)
@@ -96,25 +94,11 @@ public interface UserMapper {
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: user")
     default int insert(User record) {
         return MyBatis3Utils.insert(this::insert, record, user, c ->
-            c.map(id).toProperty("id")
-            .map(userNick).toProperty("userNick")
+            c.map(userNick).toProperty("userNick")
             .map(loginName).toProperty("loginName")
             .map(password).toProperty("password")
             .map(description).toProperty("description")
-            .map(avatarUrl).toProperty("avatarUrl")
-            .map(createTime).toProperty("createTime")
-            .map(updateTime).toProperty("updateTime")
-        );
-    }
-
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: user")
-    default int insertMultiple(Collection<User> records) {
-        return MyBatis3Utils.insertMultiple(this::insertMultiple, records, user, c ->
-            c.map(id).toProperty("id")
-            .map(userNick).toProperty("userNick")
-            .map(loginName).toProperty("loginName")
-            .map(password).toProperty("password")
-            .map(description).toProperty("description")
+            .map(tags).toProperty("tags")
             .map(avatarUrl).toProperty("avatarUrl")
             .map(createTime).toProperty("createTime")
             .map(updateTime).toProperty("updateTime")
@@ -124,11 +108,11 @@ public interface UserMapper {
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: user")
     default int insertSelective(User record) {
         return MyBatis3Utils.insert(this::insert, record, user, c ->
-            c.map(id).toPropertyWhenPresent("id", record::getId)
-            .map(userNick).toPropertyWhenPresent("userNick", record::getUserNick)
+            c.map(userNick).toPropertyWhenPresent("userNick", record::getUserNick)
             .map(loginName).toPropertyWhenPresent("loginName", record::getLoginName)
             .map(password).toPropertyWhenPresent("password", record::getPassword)
             .map(description).toPropertyWhenPresent("description", record::getDescription)
+            .map(tags).toPropertyWhenPresent("tags", record::getTags)
             .map(avatarUrl).toPropertyWhenPresent("avatarUrl", record::getAvatarUrl)
             .map(createTime).toPropertyWhenPresent("createTime", record::getCreateTime)
             .map(updateTime).toPropertyWhenPresent("updateTime", record::getUpdateTime)
@@ -164,11 +148,11 @@ public interface UserMapper {
 
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: user")
     static UpdateDSL<UpdateModel> updateAllColumns(User record, UpdateDSL<UpdateModel> dsl) {
-        return dsl.set(id).equalTo(record::getId)
-                .set(userNick).equalTo(record::getUserNick)
+        return dsl.set(userNick).equalTo(record::getUserNick)
                 .set(loginName).equalTo(record::getLoginName)
                 .set(password).equalTo(record::getPassword)
                 .set(description).equalTo(record::getDescription)
+                .set(tags).equalTo(record::getTags)
                 .set(avatarUrl).equalTo(record::getAvatarUrl)
                 .set(createTime).equalTo(record::getCreateTime)
                 .set(updateTime).equalTo(record::getUpdateTime);
@@ -176,11 +160,11 @@ public interface UserMapper {
 
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: user")
     static UpdateDSL<UpdateModel> updateSelectiveColumns(User record, UpdateDSL<UpdateModel> dsl) {
-        return dsl.set(id).equalToWhenPresent(record::getId)
-                .set(userNick).equalToWhenPresent(record::getUserNick)
+        return dsl.set(userNick).equalToWhenPresent(record::getUserNick)
                 .set(loginName).equalToWhenPresent(record::getLoginName)
                 .set(password).equalToWhenPresent(record::getPassword)
                 .set(description).equalToWhenPresent(record::getDescription)
+                .set(tags).equalToWhenPresent(record::getTags)
                 .set(avatarUrl).equalToWhenPresent(record::getAvatarUrl)
                 .set(createTime).equalToWhenPresent(record::getCreateTime)
                 .set(updateTime).equalToWhenPresent(record::getUpdateTime);
@@ -193,6 +177,7 @@ public interface UserMapper {
             .set(loginName).equalTo(record::getLoginName)
             .set(password).equalTo(record::getPassword)
             .set(description).equalTo(record::getDescription)
+            .set(tags).equalTo(record::getTags)
             .set(avatarUrl).equalTo(record::getAvatarUrl)
             .set(createTime).equalTo(record::getCreateTime)
             .set(updateTime).equalTo(record::getUpdateTime)
@@ -207,6 +192,7 @@ public interface UserMapper {
             .set(loginName).equalToWhenPresent(record::getLoginName)
             .set(password).equalToWhenPresent(record::getPassword)
             .set(description).equalToWhenPresent(record::getDescription)
+            .set(tags).equalToWhenPresent(record::getTags)
             .set(avatarUrl).equalToWhenPresent(record::getAvatarUrl)
             .set(createTime).equalToWhenPresent(record::getCreateTime)
             .set(updateTime).equalToWhenPresent(record::getUpdateTime)

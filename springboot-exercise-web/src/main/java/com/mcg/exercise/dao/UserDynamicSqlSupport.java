@@ -2,6 +2,7 @@ package com.mcg.exercise.dao;
 
 import java.sql.JDBCType;
 import java.util.Date;
+import java.util.List;
 import javax.annotation.Generated;
 import org.mybatis.dynamic.sql.SqlColumn;
 import org.mybatis.dynamic.sql.SqlTable;
@@ -25,6 +26,9 @@ public final class UserDynamicSqlSupport {
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: user.description")
     public static final SqlColumn<String> description = user.description;
 
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: user.tags")
+    public static final SqlColumn<List> tags = user.tags;
+
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: user.avatar_url")
     public static final SqlColumn<String> avatarUrl = user.avatarUrl;
 
@@ -45,6 +49,8 @@ public final class UserDynamicSqlSupport {
         public final SqlColumn<String> password = column("password", JDBCType.VARCHAR);
 
         public final SqlColumn<String> description = column("description", JDBCType.VARCHAR);
+
+        public final SqlColumn<List> tags = column("tags", JDBCType.VARCHAR, "com.mcg.exercise.extension.mybatis.StringToListTypeHandler");
 
         public final SqlColumn<String> avatarUrl = column("avatar_url", JDBCType.VARCHAR);
 

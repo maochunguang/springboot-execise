@@ -1,6 +1,7 @@
 package com.mcg.exercise.entity;
 
 import java.util.Date;
+import java.util.List;
 import javax.annotation.Generated;
 
 public class User {
@@ -18,6 +19,9 @@ public class User {
 
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: user.description")
     private String description;
+
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: user.tags")
+    private List tags;
 
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: user.avatar_url")
     private String avatarUrl;
@@ -108,6 +112,22 @@ public class User {
         this.description = description == null ? null : description.trim();
     }
 
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: user.tags")
+    public List getTags() {
+        return tags;
+    }
+
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: user")
+    public User withTags(List tags) {
+        this.setTags(tags);
+        return this;
+    }
+
+    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: user.tags")
+    public void setTags(List tags) {
+        this.tags = tags;
+    }
+
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: user.avatar_url")
     public String getAvatarUrl() {
         return avatarUrl;
@@ -174,6 +194,7 @@ public class User {
             && (this.getLoginName() == null ? other.getLoginName() == null : this.getLoginName().equals(other.getLoginName()))
             && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
             && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()))
+            && (this.getTags() == null ? other.getTags() == null : this.getTags().equals(other.getTags()))
             && (this.getAvatarUrl() == null ? other.getAvatarUrl() == null : this.getAvatarUrl().equals(other.getAvatarUrl()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
@@ -189,6 +210,7 @@ public class User {
         result = prime * result + ((getLoginName() == null) ? 0 : getLoginName().hashCode());
         result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
         result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        result = prime * result + ((getTags() == null) ? 0 : getTags().hashCode());
         result = prime * result + ((getAvatarUrl() == null) ? 0 : getAvatarUrl().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
@@ -207,6 +229,7 @@ public class User {
         sb.append(", loginName=").append(loginName);
         sb.append(", password=").append(password);
         sb.append(", description=").append(description);
+        sb.append(", tags=").append(tags);
         sb.append(", avatarUrl=").append(avatarUrl);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);

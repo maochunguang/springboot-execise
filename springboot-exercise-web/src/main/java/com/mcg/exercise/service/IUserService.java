@@ -13,4 +13,5 @@ public interface IUserService {
      * @return User
      */
     User queryUserById(Long id);
+    Long saveUser(User user);
 }

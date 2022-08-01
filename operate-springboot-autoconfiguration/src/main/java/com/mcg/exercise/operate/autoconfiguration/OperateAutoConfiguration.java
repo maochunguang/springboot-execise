@@ -9,9 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-// 引入配置文件类
 @EnableConfigurationProperties(OperateProperties.class)
-// 只有在配置了demo的配置信息时，才进行加载
 @ConditionalOnProperty(prefix = "operate", value = "scanPackage")
 public class OperateAutoConfiguration {
 

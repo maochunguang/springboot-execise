@@ -28,4 +28,10 @@ public class UserServiceImpl implements IUserService {
         operateService.operateLog();
         return userMapper.selectByPrimaryKey(id).orElse(null);
     }
+
+    @Override
+    public Long saveUser(User user) {
+        userMapper.insertSelective(user);
+        return user.getId();
+    }
 }

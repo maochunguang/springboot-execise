@@ -16,7 +16,7 @@ import java.util.Set;
  */
 @Slf4j
 public class UserInterceptor implements HandlerInterceptor {
-    public static final String NO_USER_LIMIT_PATH = "/user/queryUser";
+    public static final String NO_USER_LIMIT_PATH = "/user/queryUser,/user/save,/house/save,/house/query";
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
