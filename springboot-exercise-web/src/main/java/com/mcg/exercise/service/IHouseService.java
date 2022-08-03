@@ -2,6 +2,7 @@ package com.mcg.exercise.service;
 
 import com.mcg.exercise.entity.House;
 import com.mcg.exercise.entity.User;
+import com.mcg.exercise.vo.HouseVO;
 
 /**
  * @author maocg
@@ -20,5 +21,5 @@ public interface IHouseService {
      * @param house 数据
      * @return 主键
      */
-    Long saveHouse(House house);
+    Long saveHouse(HouseVO house);
 }

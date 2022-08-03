@@ -1,4 +1,4 @@
-package com.mcg.exercise.entity;
+package com.mcg.exercise.vo;
 
 import com.mcg.exercise.enums.ResponseEnum;
 import lombok.Data;

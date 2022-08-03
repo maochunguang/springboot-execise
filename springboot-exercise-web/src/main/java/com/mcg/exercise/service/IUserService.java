@@ -1,6 +1,7 @@
 package com.mcg.exercise.service;
 
 import com.mcg.exercise.entity.User;
+import com.mcg.exercise.vo.UserVO;
 
 /**
  * @author maocg
@@ -13,5 +14,5 @@ public interface IUserService {
      * @return User
      */
     User queryUserById(Long id);
-    Long saveUser(User user);
+    Long saveUser(UserVO userVO);
 }

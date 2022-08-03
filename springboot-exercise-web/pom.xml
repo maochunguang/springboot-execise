@@ -35,6 +35,22 @@
             <version>1.5.2.Final</version>
         </dependency>
         <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>3.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>org.mapstruct</artifactId>
+                    <groupId>mapstruct</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.jsonzou</groupId>
             <artifactId>jmockdata</artifactId>
             <version>4.3.0</version>
@@ -80,6 +96,37 @@
                         </compilerArg>
                     </compilerArgs>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.kongchen</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <version>3.1.6</version>
+                <configuration>
+                    <apiSources>
+                        <apiSource>
+                            <springmvc>true</springmvc>
+                            <locations>com.mcg.exercise</locations>
+                            <schemes>http,https</schemes>
+                            <host>localhost:8030</host>
+                            <basePath>/</basePath>
+                            <info>
+                                <title>服务接口文档</title>
+                                <version>v1</version>
+                                <description>Api接口</description>
+                            </info>
+                            <swaggerDirectory>${basedir}/interface</swaggerDirectory>
+                            <swaggerFileName>mySwagger</swaggerFileName>
+                        </apiSource>
+                    </apiSources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>

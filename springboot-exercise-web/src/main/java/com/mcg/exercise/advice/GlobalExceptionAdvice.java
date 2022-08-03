@@ -1,6 +1,6 @@
 package com.mcg.exercise.advice;
 
-import com.mcg.exercise.entity.ResponseVO;
+import com.mcg.exercise.vo.ResponseVO;
 import com.mcg.exercise.enums.ResponseEnum;
 import com.mcg.exercise.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
