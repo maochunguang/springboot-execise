@@ -14,6 +14,8 @@
   "paths" : {
     "/house/query" : {
       "get" : {
+        "summary" : "房屋数据查询接口",
+        "description" : "",
         "operationId" : "queryUser",
         "parameters" : [ {
           "name" : "id",
@@ -34,6 +36,8 @@
     },
     "/house/save" : {
       "post" : {
+        "summary" : "房屋数据保存接口",
+        "description" : "",
         "operationId" : "saveUser",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
@@ -98,7 +102,7 @@
           "name" : "body",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/User"
+            "$ref" : "#/definitions/UserVO"
           }
         } ],
         "responses" : {
@@ -193,30 +197,38 @@
       "properties" : {
         "id" : {
           "type" : "integer",
-          "format" : "int64"
+          "format" : "int64",
+          "description" : "房屋主键"
         },
         "houseAddress" : {
-          "type" : "string"
+          "type" : "string",
+          "description" : "房屋地址"
         },
         "houseInfo" : {
+          "description" : "房屋格局信息",
           "$ref" : "#/definitions/HouseInfo"
         },
         "expressInfo" : {
+          "description" : "快递信息",
           "$ref" : "#/definitions/ExpressInfo"
         },
         "communityName" : {
-          "type" : "string"
+          "type" : "string",
+          "description" : "小区名字"
         },
         "streetName" : {
-          "type" : "string"
+          "type" : "string",
+          "description" : "街道名字"
         },
         "createTime" : {
           "type" : "string",
-          "format" : "date-time"
+          "format" : "date-time",
+          "description" : "创建时间"
         },
         "updateTime" : {
           "type" : "string",
-          "format" : "date-time"
+          "format" : "date-time",
+          "description" : "更新时间"
         }
       }
     },
@@ -316,6 +328,53 @@
         "updateTime" : {
           "type" : "string",
           "format" : "date-time"
+        }
+      }
+    },
+    "UserVO" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "主键id"
+        },
+        "userNick" : {
+          "type" : "string",
+          "description" : "用户昵称"
+        },
+        "loginName" : {
+          "type" : "string",
+          "description" : "登录名"
+        },
+        "password" : {
+          "type" : "string",
+          "description" : "登录密码"
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "用户描述"
+        },
+        "tags" : {
+          "type" : "array",
+          "description" : "用户标签",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "avatarUrl" : {
+          "type" : "string",
+          "description" : "头像地址"
+        },
+        "createTime" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "创建时间"
+        },
+        "updateTime" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "更新时间"
         }
       }
     }
