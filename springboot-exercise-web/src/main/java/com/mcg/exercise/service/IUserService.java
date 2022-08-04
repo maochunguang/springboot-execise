@@ -1,7 +1,10 @@
 package com.mcg.exercise.service;
 
 import com.mcg.exercise.entity.User;
+import com.mcg.exercise.enums.UserTypeEnum;
 import com.mcg.exercise.vo.UserVO;
+
+import java.util.List;
 
 /**
  * @author maocg
@@ -15,4 +18,6 @@ public interface IUserService {
      */
     User queryUserById(Long id);
     Long saveUser(UserVO userVO);
+
+    List<User> queryUserByType(UserTypeEnum userType);
 }

@@ -8,15 +8,18 @@
   "host" : "localhost:8030",
   "basePath" : "/",
   "tags" : [ {
+    "name" : "房屋数据管理接口"
+  }, {
     "name" : "用户数据管理接口"
   } ],
   "schemes" : [ "http", "https" ],
   "paths" : {
     "/house/query" : {
       "get" : {
+        "tags" : [ "房屋数据管理接口" ],
         "summary" : "房屋数据查询接口",
         "description" : "",
-        "operationId" : "queryUser",
+        "operationId" : "queryHouse",
         "parameters" : [ {
           "name" : "id",
           "in" : "query",
@@ -34,8 +37,25 @@
         }
       }
     },
+    "/house/queryByCondition" : {
+      "get" : {
+        "tags" : [ "房屋数据管理接口" ],
+        "summary" : "房屋数据查询接口",
+        "description" : "",
+        "operationId" : "queryHouseByCondition",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ResponseVOListHouse"
+            }
+          }
+        }
+      }
+    },
     "/house/save" : {
       "post" : {
+        "tags" : [ "房屋数据管理接口" ],
         "summary" : "房屋数据保存接口",
         "description" : "",
         "operationId" : "saveUser",
@@ -84,6 +104,35 @@
             "description" : "successful operation",
             "schema" : {
               "$ref" : "#/definitions/ResponseVOUser"
+            }
+          }
+        }
+      }
+    },
+    "/user/queryUserByType" : {
+      "get" : {
+        "tags" : [ "用户数据管理接口" ],
+        "summary" : "按类型查询用户数据",
+        "description" : "",
+        "operationId" : "queryUserByType",
+        "parameters" : [ {
+          "name" : "userType",
+          "in" : "query",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "APP_User", "WEB_USER", "WX_APPLET_USER" ]
+        }, {
+          "name" : "userType",
+          "in" : "query",
+          "description" : "用户类型",
+          "required" : true,
+          "type" : "int"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ResponseVOListUser"
             }
           }
         }
@@ -259,6 +308,42 @@
         },
         "data" : {
           "$ref" : "#/definitions/House"
+        }
+      }
+    },
+    "ResponseVOListHouse" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/House"
+          }
+        }
+      }
+    },
+    "ResponseVOListUser" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/User"
+          }
         }
       }
     },

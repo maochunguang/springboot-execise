@@ -3,6 +3,7 @@ package com.mcg.exercise.service.impl;
 import com.mcg.exercise.converter.UserConverter;
 import com.mcg.exercise.dao.UserMapper;
 import com.mcg.exercise.entity.User;
+import com.mcg.exercise.enums.UserTypeEnum;
 import com.mcg.exercise.operate.service.OperateService;
 import com.mcg.exercise.service.IUserService;
 import com.mcg.exercise.vo.UserVO;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author maocg
@@ -36,5 +39,10 @@ public class UserServiceImpl implements IUserService {
         User user = UserConverter.INSTANCE.userVOToUser(userVO);
         userMapper.insertSelective(user);
         return user.getId();
+    }
+
+    @Override
+    public List<User> queryUserByType(UserTypeEnum userType) {
+        return new ArrayList<>();
     }
 }

@@ -1,5 +1,6 @@
 package com.mcg.exercise.controller;
 
+import com.mcg.exercise.enums.UserTypeEnum;
 import com.mcg.exercise.vo.ResponseVO;
 import com.mcg.exercise.entity.User;
 import com.mcg.exercise.service.IUserService;
@@ -11,6 +12,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author mao
@@ -36,6 +39,15 @@ public class UserController {
     public ResponseVO<User> queryUser(@RequestParam("id") Long id) {
         return ResponseVO.success(userService.queryUserById(id));
     }
+    @ApiOperation("按类型查询用户数据")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "userType", value = "用户类型", required = true, dataType = "int", paramType = "query"),
+    })
+    @GetMapping("/queryUserByType")
+    public ResponseVO<List<User>> queryUserByType(@RequestParam UserTypeEnum userType) {
+        return ResponseVO.success(userService.queryUserByType(userType));
+    }
+
     @ApiOperation("用户数据保存接口")
     @PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseVO<Long> saveUser(@RequestBody UserVO userVO) {

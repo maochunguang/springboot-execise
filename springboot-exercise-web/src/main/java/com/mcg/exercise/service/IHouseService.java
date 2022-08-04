@@ -2,7 +2,10 @@ package com.mcg.exercise.service;
 
 import com.mcg.exercise.entity.House;
 import com.mcg.exercise.entity.User;
+import com.mcg.exercise.vo.HouseQueryVO;
 import com.mcg.exercise.vo.HouseVO;
+
+import java.util.List;
 
 /**
  * @author maocg
@@ -22,4 +25,6 @@ public interface IHouseService {
      * @return 主键
      */
     Long saveHouse(HouseVO house);
+
+    List<House> queryHouseByCondition(HouseQueryVO queryVO);
 }

@@ -4,11 +4,13 @@ import com.mcg.exercise.converter.HouseConverter;
 import com.mcg.exercise.dao.HouseMapper;
 import com.mcg.exercise.entity.House;
 import com.mcg.exercise.service.IHouseService;
+import com.mcg.exercise.vo.HouseQueryVO;
 import com.mcg.exercise.vo.HouseVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author maocg
@@ -30,5 +32,11 @@ public class HouseServiceImpl implements IHouseService {
         House house = HouseConverter.INSTANCE.houseVOToHouse(houseVO);
         houseMapper.insertSelective(house);
         return house.getId();
+    }
+
+    @Override
+    public List<House> queryHouseByCondition(HouseQueryVO queryVO) {
+
+        return null;
     }
 }
