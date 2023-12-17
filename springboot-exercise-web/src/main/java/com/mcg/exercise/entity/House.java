@@ -13,14 +13,8 @@ public class House {
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.house_info")
     private HouseInfo houseInfo;
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.express_info")
-    private ExpressInfo expressInfo;
-
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.community_name")
     private String communityName;
-
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.street_name")
-    private String streetName;
 
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.create_time")
     private Date createTime;
@@ -76,22 +70,6 @@ public class House {
         this.houseInfo = houseInfo;
     }
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.express_info")
-    public ExpressInfo getExpressInfo() {
-        return expressInfo;
-    }
-
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: house")
-    public House withExpressInfo(ExpressInfo expressInfo) {
-        this.setExpressInfo(expressInfo);
-        return this;
-    }
-
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.express_info")
-    public void setExpressInfo(ExpressInfo expressInfo) {
-        this.expressInfo = expressInfo;
-    }
-
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.community_name")
     public String getCommunityName() {
         return communityName;
@@ -106,22 +84,6 @@ public class House {
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.community_name")
     public void setCommunityName(String communityName) {
         this.communityName = communityName == null ? null : communityName.trim();
-    }
-
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.street_name")
-    public String getStreetName() {
-        return streetName;
-    }
-
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: house")
-    public House withStreetName(String streetName) {
-        this.setStreetName(streetName);
-        return this;
-    }
-
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.street_name")
-    public void setStreetName(String streetName) {
-        this.streetName = streetName == null ? null : streetName.trim();
     }
 
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.create_time")
@@ -172,9 +134,7 @@ public class House {
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getHouseAddress() == null ? other.getHouseAddress() == null : this.getHouseAddress().equals(other.getHouseAddress()))
             && (this.getHouseInfo() == null ? other.getHouseInfo() == null : this.getHouseInfo().equals(other.getHouseInfo()))
-            && (this.getExpressInfo() == null ? other.getExpressInfo() == null : this.getExpressInfo().equals(other.getExpressInfo()))
             && (this.getCommunityName() == null ? other.getCommunityName() == null : this.getCommunityName().equals(other.getCommunityName()))
-            && (this.getStreetName() == null ? other.getStreetName() == null : this.getStreetName().equals(other.getStreetName()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
     }
@@ -187,9 +147,7 @@ public class House {
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getHouseAddress() == null) ? 0 : getHouseAddress().hashCode());
         result = prime * result + ((getHouseInfo() == null) ? 0 : getHouseInfo().hashCode());
-        result = prime * result + ((getExpressInfo() == null) ? 0 : getExpressInfo().hashCode());
         result = prime * result + ((getCommunityName() == null) ? 0 : getCommunityName().hashCode());
-        result = prime * result + ((getStreetName() == null) ? 0 : getStreetName().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         return result;
@@ -205,9 +163,7 @@ public class House {
         sb.append(", id=").append(id);
         sb.append(", houseAddress=").append(houseAddress);
         sb.append(", houseInfo=").append(houseInfo);
-        sb.append(", expressInfo=").append(expressInfo);
         sb.append(", communityName=").append(communityName);
-        sb.append(", streetName=").append(streetName);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append("]");

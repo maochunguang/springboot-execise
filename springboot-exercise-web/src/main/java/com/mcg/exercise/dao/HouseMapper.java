@@ -35,7 +35,7 @@ import org.mybatis.dynamic.sql.util.mybatis3.MyBatis3Utils;
 @Mapper
 public interface HouseMapper {
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: house")
-    BasicColumn[] selectList = BasicColumn.columnList(id, houseAddress, houseInfo, expressInfo, communityName, streetName, createTime, updateTime);
+    BasicColumn[] selectList = BasicColumn.columnList(id, houseAddress, houseInfo, communityName, createTime, updateTime);
 
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source Table: house")
     @SelectProvider(type=SqlProviderAdapter.class, method="select")
@@ -61,9 +61,7 @@ public interface HouseMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
         @Result(column="house_address", property="houseAddress", jdbcType=JdbcType.VARCHAR),
         @Result(column="house_info", property="houseInfo", typeHandler=JacksonTypeHandler.class, jdbcType=JdbcType.VARCHAR),
-        @Result(column="express_info", property="expressInfo", typeHandler=JacksonTypeHandler.class, jdbcType=JdbcType.VARCHAR),
         @Result(column="community_name", property="communityName", jdbcType=JdbcType.VARCHAR),
-        @Result(column="street_name", property="streetName", jdbcType=JdbcType.VARCHAR),
         @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="update_time", property="updateTime", jdbcType=JdbcType.TIMESTAMP)
     })
@@ -95,9 +93,7 @@ public interface HouseMapper {
         return MyBatis3Utils.insert(this::insert, record, house, c ->
             c.map(houseAddress).toProperty("houseAddress")
             .map(houseInfo).toProperty("houseInfo")
-            .map(expressInfo).toProperty("expressInfo")
             .map(communityName).toProperty("communityName")
-            .map(streetName).toProperty("streetName")
             .map(createTime).toProperty("createTime")
             .map(updateTime).toProperty("updateTime")
         );
@@ -108,9 +104,7 @@ public interface HouseMapper {
         return MyBatis3Utils.insert(this::insert, record, house, c ->
             c.map(houseAddress).toPropertyWhenPresent("houseAddress", record::getHouseAddress)
             .map(houseInfo).toPropertyWhenPresent("houseInfo", record::getHouseInfo)
-            .map(expressInfo).toPropertyWhenPresent("expressInfo", record::getExpressInfo)
             .map(communityName).toPropertyWhenPresent("communityName", record::getCommunityName)
-            .map(streetName).toPropertyWhenPresent("streetName", record::getStreetName)
             .map(createTime).toPropertyWhenPresent("createTime", record::getCreateTime)
             .map(updateTime).toPropertyWhenPresent("updateTime", record::getUpdateTime)
         );
@@ -147,9 +141,7 @@ public interface HouseMapper {
     static UpdateDSL<UpdateModel> updateAllColumns(House record, UpdateDSL<UpdateModel> dsl) {
         return dsl.set(houseAddress).equalTo(record::getHouseAddress)
                 .set(houseInfo).equalTo(record::getHouseInfo)
-                .set(expressInfo).equalTo(record::getExpressInfo)
                 .set(communityName).equalTo(record::getCommunityName)
-                .set(streetName).equalTo(record::getStreetName)
                 .set(createTime).equalTo(record::getCreateTime)
                 .set(updateTime).equalTo(record::getUpdateTime);
     }
@@ -158,9 +150,7 @@ public interface HouseMapper {
     static UpdateDSL<UpdateModel> updateSelectiveColumns(House record, UpdateDSL<UpdateModel> dsl) {
         return dsl.set(houseAddress).equalToWhenPresent(record::getHouseAddress)
                 .set(houseInfo).equalToWhenPresent(record::getHouseInfo)
-                .set(expressInfo).equalToWhenPresent(record::getExpressInfo)
                 .set(communityName).equalToWhenPresent(record::getCommunityName)
-                .set(streetName).equalToWhenPresent(record::getStreetName)
                 .set(createTime).equalToWhenPresent(record::getCreateTime)
                 .set(updateTime).equalToWhenPresent(record::getUpdateTime);
     }
@@ -170,9 +160,7 @@ public interface HouseMapper {
         return update(c ->
             c.set(houseAddress).equalTo(record::getHouseAddress)
             .set(houseInfo).equalTo(record::getHouseInfo)
-            .set(expressInfo).equalTo(record::getExpressInfo)
             .set(communityName).equalTo(record::getCommunityName)
-            .set(streetName).equalTo(record::getStreetName)
             .set(createTime).equalTo(record::getCreateTime)
             .set(updateTime).equalTo(record::getUpdateTime)
             .where(id, isEqualTo(record::getId))
@@ -184,9 +172,7 @@ public interface HouseMapper {
         return update(c ->
             c.set(houseAddress).equalToWhenPresent(record::getHouseAddress)
             .set(houseInfo).equalToWhenPresent(record::getHouseInfo)
-            .set(expressInfo).equalToWhenPresent(record::getExpressInfo)
             .set(communityName).equalToWhenPresent(record::getCommunityName)
-            .set(streetName).equalToWhenPresent(record::getStreetName)
             .set(createTime).equalToWhenPresent(record::getCreateTime)
             .set(updateTime).equalToWhenPresent(record::getUpdateTime)
             .where(id, isEqualTo(record::getId))

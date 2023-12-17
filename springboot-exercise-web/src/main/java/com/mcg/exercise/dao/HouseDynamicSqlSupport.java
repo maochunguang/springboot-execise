@@ -1,6 +1,5 @@
 package com.mcg.exercise.dao;
 
-import com.mcg.exercise.entity.ExpressInfo;
 import com.mcg.exercise.entity.HouseInfo;
 import java.sql.JDBCType;
 import java.util.Date;
@@ -21,14 +20,8 @@ public final class HouseDynamicSqlSupport {
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.house_info")
     public static final SqlColumn<HouseInfo> houseInfo = house.houseInfo;
 
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.express_info")
-    public static final SqlColumn<ExpressInfo> expressInfo = house.expressInfo;
-
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.community_name")
     public static final SqlColumn<String> communityName = house.communityName;
-
-    @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.street_name")
-    public static final SqlColumn<String> streetName = house.streetName;
 
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", comments="Source field: house.create_time")
     public static final SqlColumn<Date> createTime = house.createTime;
@@ -44,11 +37,7 @@ public final class HouseDynamicSqlSupport {
 
         public final SqlColumn<HouseInfo> houseInfo = column("house_info", JDBCType.VARCHAR, "com.mcg.exercise.extension.mybatis.JacksonTypeHandler");
 
-        public final SqlColumn<ExpressInfo> expressInfo = column("express_info", JDBCType.VARCHAR, "com.mcg.exercise.extension.mybatis.JacksonTypeHandler");
-
         public final SqlColumn<String> communityName = column("community_name", JDBCType.VARCHAR);
-
-        public final SqlColumn<String> streetName = column("street_name", JDBCType.VARCHAR);
 
         public final SqlColumn<Date> createTime = column("create_time", JDBCType.TIMESTAMP);
 

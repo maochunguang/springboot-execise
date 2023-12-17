@@ -24,7 +24,7 @@
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/spring_exercise?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT"
-                        userId="root"
+                        userId="devbox"
                         password="mypassword">
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
@@ -67,8 +67,6 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
             <columnOverride column="house_info" jdbcType="VARCHAR" javaType="com.mcg.exercise.entity.HouseInfo"
             typeHandler="com.mcg.exercise.extension.mybatis.JacksonTypeHandler"/>
-            <columnOverride column="express_info" jdbcType="VARCHAR" javaType="com.mcg.exercise.entity.ExpressInfo"
-                            typeHandler="com.mcg.exercise.extension.mybatis.JacksonTypeHandler"/>
         </table>
         <!--        生成表结束                  -->
 

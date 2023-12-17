@@ -25,9 +25,6 @@ public class HouseVO {
     @ApiModelProperty(value = "房屋格局信息")
     private HouseInfo houseInfo;
 
-    @ApiModelProperty(value = "快递信息")
-    private ExpressInfo expressInfo;
-
     @ApiModelProperty(value = "小区名字")
     private String communityName;
 
